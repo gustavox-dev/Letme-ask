@@ -1,0 +1,31 @@
+.button {
+  margin-top: 34px;
+  height: 50px;
+  border-radius: 8px;
+  font-weight: 500px;
+  background: #835afd;
+  color: white;
+  padding: 0 32px; // Para o texto não grudar nas laterais esqueda e direita
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 0;
+
+  transition: filter 0.2s;
+
+  img {
+    margin-right: 8px;
+  }
+
+  // Efeito hover aplicado apenas se o elemento estiver desabilitado
+  &:not(:disabled):hover {
+    filter: brightness(0.9);
+  }
+
+  &:disabled {
+    opacity: 0.6; // Quando o botão estiver desativado a opacidade será diminuida
+    cursor: not-allowed; // Plaquinha de não permitido
+  }
+}
