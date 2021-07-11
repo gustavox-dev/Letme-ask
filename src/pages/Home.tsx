@@ -45,6 +45,12 @@ export function Home() {
       return
     }
 
+    // Mensagem apresentada ao tentar acessar a sala excluída
+    if (roomRef.val().endedAt) {
+      alert('Room already closed.')
+      return
+    }
+
     // Caso exista, será redirecionado para a sala com o id passado. 
     history.push(`/rooms/${roomCode}`)
   }
