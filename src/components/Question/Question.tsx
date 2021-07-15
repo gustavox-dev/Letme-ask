@@ -1,5 +1,6 @@
 // Qualquer conteudo jsx - ReactNode
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
+import cx from 'classnames'
 
 import './styles.scss'
 
@@ -10,15 +11,27 @@ type QuestionProps = {
     avatar: string
   }
   children?: ReactNode
+  isAnswered?: boolean
+  isHighlighted?: boolean
 }
+
 
 export function Question({
   content,
   author,
-  children
+  isAnswered = false,
+  isHighlighted = false,
+  children,
 }: QuestionProps) {
   return (
-    <div className="question">
+    <div className={cx(
+      'question',
+      // A chave é a classe e o valor tem que ser um boolean
+      { answered: isAnswered },
+      // Só se aplica se estiver destacada e não estiver respondida
+      { highlighted: isHighlighted && !isAnswered },
+
+    )} >
       <p>{content}</p>
       <footer>
         <div className="user-info">
@@ -29,6 +42,6 @@ export function Question({
           {children}
         </div>
       </footer>
-    </div>
+    </ div>
   )
 }
